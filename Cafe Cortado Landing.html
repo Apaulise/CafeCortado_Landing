@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Café Cortado — Mucho Gusto · Barbería y café de especialidad en San Cristóbal</title>
+<meta name="description" content="Barbería vintage y café de especialidad en San Cristóbal, CABA. Un corte. Un cortado. Reservá tu turno en Av. Entre Ríos 920.">
+<meta name="theme-color" content="#1A2C31">
+<meta property="og:title" content="Café Cortado — Mucho Gusto">
+<meta property="og:description" content="Barbería vintage y café de especialidad en San Cristóbal. Un corte. Un cortado.">
+<meta property="og:image" content="assets/fachada.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/isotipo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Josefin+Sans:wght@400;600;700&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Café Cortado — Mucho Gusto · landing
+   Tokens y medidas transcritos de los mockups 1a (desktop 1440),
+   1c (mobile 390) y 1e (estados hover) del design canvas.
+   ============================================================ */
+:root{
+  --ink:#1A2C31;          /* fondo principal */
+  --ink-2:#142328;        /* fondo de secciones alternas */
+  --cream:#E6DFD6;        /* texto y superficies claras */
+  --tan:#C4905F;          /* acento sobre fondo oscuro */
+  --copper:#B07A4F;       /* acento fuerte / hover */
+  --copper-dark:#8A5A34;  /* acento sobre fondo claro */
+
+  --pad:64px;             /* padding lateral desktop */
+  --maxw:1440px;
+  --header-h:88px;
+
+  --f-display:'Stardos Stencil', Georgia, serif;
+  --f-label:'Josefin Sans', system-ui, sans-serif;
+  --f-body:'Karla', system-ui, sans-serif;
+
+  --hair:rgba(230,223,214,.12);
+  --hair-2:rgba(230,223,214,.18);
+  --ease:.2s ease;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:calc(var(--header-h) + 8px);
+  -webkit-text-size-adjust:100%;
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--cream);
+  font-family:var(--f-body);
+  font-size:17px;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{max-width:100%}
+[hidden]{display:none!important}
+
+:focus-visible{outline:2px solid var(--tan);outline-offset:3px}
+
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--cream);color:var(--ink);padding:12px 20px;
+  font-family:var(--f-label);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:12px;
+}
+.skip:focus{left:16px;top:16px}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+
+/* ---------- primitivos tipográficos ---------- */
+.eyebrow{
+  font-family:var(--f-label);font-weight:600;font-size:12px;
+  letter-spacing:.32em;text-transform:uppercase;color:var(--tan);
+}
+.eyebrow--muted{color:rgba(230,223,214,.6)}
+.eyebrow--dark{color:var(--copper-dark)}
+
+h1,h2,h3{font-family:var(--f-display);font-weight:700;margin:0;text-wrap:balance}
+h2{font-size:clamp(38px,4.4vw,64px);line-height:1.02}
+h3{font-size:clamp(28px,2.8vw,40px);line-height:1.1}
+
+p{margin:0}
+.lede{line-height:1.6;color:rgba(230,223,214,.8)}
+
+/* ---------- botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--f-label);font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;border:0;text-align:center;
+  transition:background var(--ease),color var(--ease),border-color var(--ease),transform var(--ease),box-shadow var(--ease),opacity var(--ease);
+}
+.btn--solid{height:58px;padding:3px 34px 0;background:var(--cream);color:var(--ink);font-size:13px}
+.btn--solid:hover{background:var(--copper);color:var(--ink);transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
+.btn--ghost{height:58px;padding:3px 34px 0;border:1px solid rgba(230,223,214,.45);color:var(--cream);background:transparent;font-size:13px}
+.btn--ghost:hover{border-color:var(--cream);background:rgba(230,223,214,.08)}
+.btn--sm{height:40px;padding:3px 18px 0;border:1px solid rgba(230,223,214,.4);color:var(--cream);background:transparent;font-size:11px;letter-spacing:.22em;white-space:nowrap}
+.btn--sm:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.btn--wide{height:48px;padding-top:3px;width:100%;border:1px solid rgba(230,223,214,.4);color:var(--cream);background:transparent;font-size:11px;letter-spacing:.22em}
+.btn--wide:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.btn--xl{height:64px;padding:3px 44px 0;background:var(--cream);color:var(--ink);font-size:14px}
+.btn--xl:hover{background:var(--copper);color:var(--ink);transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
+
+/* ---------- layout ---------- */
+.wrap{max-width:var(--maxw);margin-inline:auto}
+main > section{padding-inline:var(--pad)}
+.sec-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:48px;margin-bottom:64px;
+}
+.sec-head__left{display:flex;flex-direction:column;gap:20px}
+.sec-head__aside{max-width:340px}
+
+/* trama diagonal reutilizada del mockup */
+.stripes{background-image:repeating-linear-gradient(118deg,transparent 0 58px,rgba(230,223,214,.045) 58px 59px)}
+.stripes--soft{background-image:repeating-linear-gradient(118deg,transparent 0 58px,rgba(230,223,214,.035) 58px 59px)}
+.stripes--cta{background-image:repeating-linear-gradient(118deg,transparent 0 58px,rgba(230,223,214,.05) 58px 59px)}
+
+/* tinte cálido sobre cada foto, igual que el mockup */
+.tint{position:absolute;inset:0;pointer-events:none;background:rgba(176,122,79,.12);mix-blend-mode:multiply}
+.frame{position:relative;overflow:hidden}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* placeholder para las fotos que el mockup dejó vacías */
+.slot{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  background:
+    repeating-linear-gradient(135deg,rgba(230,223,214,.05) 0 10px,transparent 10px 20px),
+    var(--ink-2);
+  border:1px solid var(--hair-2);
+}
+.slot span{
+  font-family:var(--f-label);font-weight:600;font-size:11px;
+  letter-spacing:.22em;text-transform:uppercase;color:rgba(230,223,214,.45);
+  text-align:center;padding:0 16px;
+}
+.slot--portrait span{font-family:var(--f-display);font-size:44px;letter-spacing:0;color:rgba(230,223,214,.28)}
+
+/* grano global */
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22220%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E");
+}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:40;height:var(--header-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--pad);
+  background:rgba(26,44,49,.96);
+  -webkit-backdrop-filter:saturate(1.2) blur(6px);
+  backdrop-filter:saturate(1.2) blur(6px);
+  border-bottom:1px solid var(--hair);
+}
+.site-header__logo{height:48px;width:auto;display:block}
+.nav{display:flex;gap:44px}
+.nav a{
+  font-family:var(--f-label);font-weight:600;font-size:12px;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(230,223,214,.78);text-decoration:none;
+  padding:6px 0;border-bottom:1px solid transparent;
+  transition:color var(--ease),border-color var(--ease);
+}
+.nav a:hover,.nav a:focus-visible{color:var(--cream);border-bottom-color:var(--copper)}
+.header-cta{height:46px;padding:3px 24px 0;font-size:12px}
+
+.burger{
+  display:none;width:48px;height:48px;border:0;background:transparent;
+  flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;cursor:pointer;
+}
+.burger span{width:26px;height:1.5px;background:var(--cream);transition:transform var(--ease),opacity var(--ease)}
+.burger span:nth-child(2){width:18px}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+.mobile-menu{
+  position:absolute;top:100%;left:0;right:0;
+  background:var(--ink-2);border-bottom:1px solid rgba(230,223,214,.14);
+  padding:12px 20px 24px;display:flex;flex-direction:column;
+}
+.mobile-menu a{
+  display:flex;align-items:center;justify-content:space-between;height:56px;
+  border-bottom:1px solid rgba(230,223,214,.1);
+  font-family:var(--f-display);font-weight:700;font-size:26px;
+  color:var(--cream);text-decoration:none;
+}
+.mobile-menu a span{font-size:16px;color:var(--tan)}
+
+/* ---------- 00 · hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  padding-top:104px;
+  display:flex;flex-direction:column;align-items:center;gap:36px;text-align:center;
+}
+.hero__watermark{
+  position:absolute;right:-80px;top:20px;height:820px;width:auto;
+  opacity:.05;pointer-events:none;user-select:none;
+}
+.hero__kicker{
+  position:relative;display:flex;align-items:center;gap:18px;
+  font-family:var(--f-label);font-weight:600;font-size:12px;
+  letter-spacing:.32em;text-transform:uppercase;color:rgba(230,223,214,.8);
+}
+.hero__kicker::before,.hero__kicker::after{
+  content:"";width:48px;height:1px;background:rgba(230,223,214,.4);flex:none;
+}
+.hero__logo{width:min(656px,86%);height:auto;display:block}
+.hero h1{
+  margin-top:8px;font-size:clamp(46px,6.4vw,92px);line-height:1;letter-spacing:-.01em;
+}
+.hero h1 em{font-style:normal;color:var(--tan)}
+.hero__sub{font-size:clamp(17px,1.6vw,21px);line-height:1.5;color:rgba(230,223,214,.85);max-width:640px}
+.hero__actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.rating-pill{
+  display:flex;align-items:center;gap:10px;padding:10px 18px 8px;
+  border:1px solid rgba(230,223,214,.2);border-radius:999px;
+  font-family:var(--f-label);font-weight:600;font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;
+}
+.rating-pill i{font-style:normal;color:var(--tan);font-size:14px}
+.hero__shot{
+  position:relative;width:min(1312px,100%);height:540px;margin-top:48px;
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.7);
+}
+.hero__shot img{object-position:center 30%}
+
+/* ---------- 01 · dos mundos ---------- */
+.mundos{position:relative;padding-top:150px;padding-bottom:140px}
+.mundos__visual{position:relative;height:560px}
+.m-half{position:absolute;inset:0;margin:0}
+.m-half--barberia{clip-path:polygon(0 0,58% 0,42% 100%,0 100%)}
+.m-half--cafe{clip-path:polygon(60% 0,100% 0,100% 100%,44% 100%)}
+.m-half img{width:100%;height:100%;object-fit:cover;display:block}
+.mundos__line{position:absolute;left:0;top:-48px;width:100%;height:656px;pointer-events:none}
+.mundos__copy{display:grid;grid-template-columns:1fr 1fr;gap:120px;margin-top:56px}
+.m-copy{display:flex;flex-direction:column;gap:14px;max-width:440px}
+.m-copy--cafe{justify-self:end}
+.m-copy p{line-height:1.6;color:rgba(230,223,214,.82)}
+
+/* ---------- 02 · servicios ---------- */
+.servicios{
+  padding-top:140px;padding-bottom:140px;background:var(--ink-2);
+  display:grid;grid-template-columns:380px minmax(0,1fr);gap:120px;
+}
+.servicios__intro{display:flex;flex-direction:column;gap:24px}
+.servicios__intro .btn{align-self:flex-start;margin-top:12px}
+.svc-tabs{
+  display:flex;border:1px solid rgba(230,223,214,.3);
+  width:max-content;max-width:100%;margin-bottom:28px;
+}
+.svc-tab{
+  height:50px;padding:3px 28px 0;border:0;cursor:pointer;background:transparent;color:var(--cream);
+  font-family:var(--f-label);font-weight:700;font-size:12px;
+  letter-spacing:.24em;text-transform:uppercase;
+  transition:background var(--ease),color var(--ease),opacity var(--ease);
+}
+.svc-tab:hover{opacity:.88}
+.svc-tab[aria-selected="true"]{background:var(--cream);color:var(--ink)}
+.svc-acc{
+  display:none;width:100%;height:64px;align-items:center;justify-content:space-between;
+  background:transparent;border:0;color:var(--cream);cursor:pointer;padding:0;text-align:left;
+}
+.svc-acc span:first-child{
+  font-family:var(--f-label);font-weight:700;font-size:13px;
+  letter-spacing:.24em;text-transform:uppercase;padding-top:3px;
+}
+.svc-acc span:last-child{font-family:var(--f-display);font-size:28px;color:var(--tan);line-height:1}
+.svc-cat:not(.is-active){display:none}
+.svc-row{
+  display:flex;align-items:center;gap:28px;
+  padding:22px 20px;margin:0 -20px;
+  border-bottom:1px solid rgba(230,223,214,.1);
+  transition:background var(--ease);
+}
+.svc-row:hover{background:rgba(230,223,214,.06)}
+.svc-row__main{flex:1;min-width:0;display:flex;align-items:baseline;gap:16px}
+.svc-row__name{font-family:var(--f-display);font-weight:700;font-size:27px;white-space:nowrap}
+.dots-fill{flex:1;border-bottom:2px dotted rgba(230,223,214,.28);transform:translateY(-6px)}
+.svc-row__meta{
+  font-family:var(--f-label);font-weight:600;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(230,223,214,.65);white-space:nowrap;
+}
+
+/* ---------- 03 · carta del café ---------- */
+.cafe{
+  padding-top:140px;padding-bottom:140px;
+  background:var(--cream);color:var(--ink);
+  display:grid;grid-template-columns:520px minmax(0,1fr);gap:96px;align-items:center;
+}
+.cafe__shot{position:relative;height:640px;box-shadow:0 40px 70px -30px rgba(26,44,49,.55)}
+.cafe__card{border:1px solid var(--ink);padding:10px}
+.cafe__card > div{
+  border:1px solid rgba(26,44,49,.5);padding:56px 64px;
+  display:flex;flex-direction:column;gap:12px;
+}
+.cafe h2{text-align:center;font-size:clamp(32px,3.7vw,54px);line-height:1.05}
+.cafe__rule{height:1px;background:rgba(26,44,49,.3);margin:24px 0 12px}
+.cafe-item{display:flex;flex-direction:column;gap:4px;padding:14px 0}
+.cafe-item__top{display:flex;align-items:baseline;gap:14px}
+.cafe-item__top b{font-family:var(--f-display);font-weight:700;font-size:28px}
+.cafe-item__top .dots-fill{border-bottom-color:rgba(26,44,49,.35)}
+.cafe-item__top i{font-style:normal;font-size:19px;font-weight:600;color:var(--copper-dark);white-space:nowrap}
+.cafe-item span{font-size:16px;color:rgba(26,44,49,.75)}
+
+/* ---------- 04 · equipo ---------- */
+.equipo{padding-top:140px;padding-bottom:140px}
+.equipo__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.member{display:flex;flex-direction:column;gap:14px}
+.member__shot{position:relative;height:400px;box-shadow:0 30px 50px -25px rgba(0,0,0,.7)}
+.member__id{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:8px}
+.member__id b{font-family:var(--f-display);font-weight:700;font-size:32px}
+.member__id span{
+  font-family:var(--f-label);font-weight:600;font-size:11px;
+  letter-spacing:.24em;text-transform:uppercase;color:rgba(230,223,214,.65);
+}
+
+/* ---------- 05 · reseñas ---------- */
+.resenas{
+  padding-top:130px;padding-bottom:130px;background:var(--ink-2);
+  display:grid;grid-template-columns:320px minmax(0,1fr);gap:120px;align-items:center;
+}
+.score{display:flex;flex-direction:column;gap:10px}
+.score__num{font-family:var(--f-display);font-weight:700;font-size:clamp(64px,8vw,120px);line-height:1}
+.stars{color:var(--tan);font-size:22px;letter-spacing:.2em}
+.score__src{
+  font-family:var(--f-label);font-weight:600;font-size:12px;
+  letter-spacing:.24em;text-transform:uppercase;color:rgba(230,223,214,.75);
+}
+.rev{display:flex;flex-direction:column;gap:28px;border-left:1px solid var(--hair-2);padding-left:80px}
+.rev__track{display:block}
+.rev-card{margin:0;display:flex;flex-direction:column;gap:28px}
+.rev-card:not(.is-active){display:none}
+.rev-card .stars{display:none}   /* en desktop las estrellas van una sola vez, arriba */
+.rev-card blockquote{
+  margin:0;font-family:var(--f-display);font-weight:400;
+  font-size:clamp(24px,2.7vw,38px);line-height:1.22;min-height:240px;text-wrap:pretty;
+}
+/* en desktop el nombre vive en el pie (como el mockup); en mobile, en la tarjeta */
+.rev-card figcaption{display:none}
+.rev-card figcaption,.rev__who{
+  font-family:var(--f-label);font-weight:600;font-size:12px;
+  letter-spacing:.24em;text-transform:uppercase;
+}
+.rev-card figcaption span,.rev__who span{color:rgba(230,223,214,.5)}
+.rev__foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.rev__nav{display:flex;align-items:center;gap:20px}
+.rev__dots{display:flex;gap:8px}
+.rev__dots button{
+  height:4px;width:16px;padding:0;border:0;cursor:pointer;
+  background:rgba(230,223,214,.3);transition:all .3s;
+}
+.rev__dots button[aria-current="true"]{width:32px;background:var(--tan)}
+.rev__arrow{
+  width:48px;height:48px;border:1px solid rgba(230,223,214,.4);background:transparent;
+  color:var(--cream);font-size:18px;cursor:pointer;transition:background var(--ease),color var(--ease);
+}
+.rev__arrow:hover{background:var(--cream);color:var(--ink)}
+
+/* ---------- 06 · galería ---------- */
+.galeria{padding-top:140px;padding-bottom:140px}
+.galeria .sec-head{margin-bottom:48px}
+.galeria__link{
+  font-family:var(--f-label);font-weight:600;font-size:12px;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--cream);text-decoration:none;
+  border-bottom:1px solid var(--copper);padding-bottom:6px;transition:color var(--ease);
+}
+.galeria__link:hover{color:var(--tan)}
+.galeria__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:230px;gap:16px}
+.g1{grid-column:1 / 3;grid-row:1 / 3}
+.g2{grid-column:3;grid-row:1}
+.g3{grid-column:4;grid-row:1 / 3}
+.g4{grid-column:3;grid-row:2}
+.g5{grid-column:1;grid-row:3}
+.g6{grid-column:2 / 5;grid-row:3}
+
+/* ---------- 07 · visitanos ---------- */
+.visitanos{
+  padding-bottom:140px;
+  display:grid;grid-template-columns:minmax(0,1fr) 720px;gap:96px;align-items:stretch;
+}
+.visitanos__info{display:flex;flex-direction:column;gap:28px;padding-top:20px}
+.fact{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--hair-2);padding-top:24px}
+.fact dt{
+  font-family:var(--f-label);font-weight:600;font-size:11px;
+  letter-spacing:.26em;text-transform:uppercase;color:rgba(230,223,214,.6);
+}
+.fact dd{margin:0;font-size:20px}
+.amenities{
+  display:flex;gap:28px;flex-wrap:wrap;
+  border-top:1px solid var(--hair-2);padding-top:24px;margin:0;padding-inline:0;list-style:none;
+}
+.amenities li{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--f-label);font-weight:600;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;
+}
+.amenities li::before{content:"";width:8px;height:8px;background:var(--copper);transform:rotate(45deg);flex:none}
+.visitanos .btn--ghost{align-self:flex-start;margin-top:8px}
+.visitanos__map{position:relative;height:560px;filter:saturate(.6)}
+
+/* ---------- cierre ---------- */
+.cierre{
+  position:relative;padding-top:150px;padding-bottom:150px;background:var(--ink-2);
+  text-align:center;display:flex;flex-direction:column;align-items:center;gap:40px;overflow:hidden;
+}
+.cierre__watermark{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  height:560px;width:auto;opacity:.06;pointer-events:none;user-select:none;
+}
+.cierre__title{position:relative;font-family:var(--f-display);font-weight:700;font-size:clamp(60px,9vw,132px);line-height:.95}
+.cierre p{position:relative;font-size:clamp(16px,1.6vw,21px);color:rgba(230,223,214,.85)}
+.cierre .btn{position:relative}
+
+/* ---------- footer ---------- */
+.site-footer{
+  padding:72px var(--pad) 48px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:48px;
+  border-top:1px solid var(--hair);
+}
+.site-footer__logo{height:64px;width:auto;display:block}
+.fcol{display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.5;color:rgba(230,223,214,.8)}
+.fcol b{
+  font-family:var(--f-label);font-weight:600;font-size:11px;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--cream);
+}
+.fcol a{color:rgba(230,223,214,.85);text-decoration:none;transition:color var(--ease)}
+.fcol a:hover{color:var(--tan)}
+.site-footer__base{
+  grid-column:1 / -1;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  padding-top:32px;border-top:1px solid rgba(230,223,214,.1);
+  font-family:var(--f-label);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(230,223,214,.5);
+}
+
+/* ---------- barra fija mobile ---------- */
+.mobile-bar{
+  display:none;position:sticky;bottom:0;z-index:35;
+  padding:12px 16px calc(20px + env(safe-area-inset-bottom,0px));
+  background:linear-gradient(180deg,rgba(26,44,49,0),var(--ink) 30%);
+}
+.mobile-bar a{
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;padding:3px 20px 0;background:var(--cream);color:var(--ink);text-decoration:none;
+  font-family:var(--f-label);font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+  box-shadow:0 12px 30px -8px rgba(0,0,0,.6);
+}
+.mobile-bar a:active{background:var(--copper)}
+.mobile-bar a span{font-size:11px;letter-spacing:.1em}
+
+/* ============================================================
+   Responsive — de 1440 a 390
+   ============================================================ */
+@media (max-width:1280px){
+  :root{--pad:40px}
+  .servicios{grid-template-columns:320px minmax(0,1fr);gap:64px}
+  .cafe{grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:56px}
+  .cafe__card > div{padding:44px 40px}
+  .resenas{gap:64px}
+  .rev{padding-left:48px}
+  .visitanos{grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:56px}
+  .mundos__copy{gap:64px}
+}
+
+@media (max-width:1024px){
+  .nav{gap:28px}
+  .nav a{font-size:11px;letter-spacing:.2em}
+  .servicios,.cafe,.resenas,.visitanos{grid-template-columns:minmax(0,1fr);gap:56px}
+  .cafe__shot{height:420px}
+  .equipo__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+  .rev{border-left:0;padding-left:0;border-top:1px solid var(--hair-2);padding-top:40px}
+  .visitanos__map{height:420px}
+  .site-footer{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ---- layout mobile: replica el mockup 1c (390) ---- */
+@media (max-width:767px){
+  :root{--pad:20px;--header-h:64px}
+
+  body{font-size:16px}
+
+  .nav,.header-cta{display:none}
+  .burger{display:flex}
+  .site-header__logo{height:38px}
+  .site-header{background:rgba(26,44,49,.97)}
+
+  .mobile-bar{display:block}
+
+  .sec-head{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:28px}
+  .sec-head__aside{max-width:none}
+
+  /* hero */
+  .hero{padding-top:48px;gap:22px}
+  .hero__watermark{display:none}
+  .hero__kicker{font-size:10px;letter-spacing:.28em}
+  .hero__kicker::before,.hero__kicker::after{display:none}
+  .hero__logo{width:256px}
+  .hero h1{font-size:48px}
+  .hero__sub{font-size:17px}
+  .hero__actions{flex-direction:column;gap:10px;width:100%}
+  .hero__actions .btn{width:100%;height:54px;padding:3px 20px 0;font-size:13px;letter-spacing:.22em}
+  .hero__actions .btn--solid:hover{transform:none;box-shadow:none}
+  .hero__actions .btn:active{background:var(--copper)}
+  .rating-pill{font-size:11px;letter-spacing:.16em;padding:9px 16px 7px}
+  .hero__shot{
+    width:calc(100% + (var(--pad) * 2));height:300px;
+    margin:20px calc(var(--pad) * -1) 0;box-shadow:none;
+  }
+
+  /* dos mundos: el diagonal se convierte en dos bloques apilados */
+  .mundos{padding-top:72px;padding-bottom:72px}
+  .mundos__inner{display:flex;flex-direction:column}
+  .mundos__visual,.mundos__copy{display:contents}
+  .mundos__visual{height:auto}
+  .m-half{position:static;height:230px}
+  .m-half--barberia{clip-path:polygon(0 0,100% 0,100% 82%,0 100%);order:1}
+  .m-half--cafe{clip-path:polygon(0 18%,100% 0,100% 100%,0 100%);order:4}
+  .mundos__tint{display:none}
+  .mundos__line{position:static;order:3;width:100%;height:60px;margin:18px 0}
+  .m-copy{max-width:none;gap:8px;padding-top:20px}
+  .m-copy--barberia{order:2}
+  .m-copy--cafe{order:5;justify-self:auto}
+  .m-copy h3{font-size:28px}
+  .m-copy p{font-size:16px;line-height:1.55}
+
+  /* servicios: tabs -> acordeón */
+  .servicios{padding-top:72px;padding-bottom:72px}
+  .svc-tabs{display:none}
+  .svc-acc{display:flex}
+  .svc-cat{border-top:1px solid rgba(230,223,214,.2)}
+  .svc-cat:not(.is-active){display:block}
+  .svc-cat:not(.is-open) .svc-rows{display:none}
+  .svc-rows{padding-bottom:16px}
+  .svc-row{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:"main main" "meta btn";
+    align-items:center;gap:8px 12px;
+    padding:14px 0;margin:0;border-bottom:1px dotted rgba(230,223,214,.2);
+  }
+  .svc-row:hover{background:transparent}
+  .svc-row__main{grid-area:main;gap:10px}
+  .svc-row__meta{grid-area:meta;font-size:11px;letter-spacing:.18em;white-space:normal}
+  .svc-row .btn--sm{grid-area:btn;height:44px;padding:3px 16px 0;justify-self:end}
+  .svc-row__name{font-size:20px;white-space:normal}
+
+  /* café */
+  .cafe{padding-top:64px;padding-bottom:64px;gap:0}
+  .cafe__card{padding:6px}
+  .cafe__card > div{padding:32px 22px}
+  .cafe h2{font-size:32px;line-height:1.08;margin-bottom:8px}
+  .cafe__shot{height:200px;margin-bottom:12px;box-shadow:none;order:-1}
+  .cafe-item__top b{font-size:21px}
+  .cafe-item__top i{font-size:17px}
+  .cafe-item span{font-size:15px}
+
+  /* equipo: carrusel horizontal */
+  .equipo{padding:72px 0 72px var(--pad)}
+  .equipo .sec-head{padding-right:var(--pad)}
+  .equipo__grid{
+    display:flex;gap:14px;overflow-x:auto;
+    scroll-snap-type:x mandatory;padding-right:var(--pad);padding-bottom:6px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .member{flex:none;width:250px;scroll-snap-align:start;gap:10px}
+  .member__shot{height:320px;box-shadow:none}
+  .member__id b{font-size:26px}
+  .member__id span{font-size:10px;letter-spacing:.22em}
+
+  /* reseñas: tarjetas scrolleables */
+  .resenas{padding:64px 0 64px var(--pad);gap:24px}
+  .resenas .score{
+    flex-direction:row;align-items:baseline;gap:14px;padding-right:var(--pad);flex-wrap:wrap;
+  }
+  .resenas .score .eyebrow{flex:0 0 100%}   /* el rótulo va en su propia línea */
+  .score__num{font-size:64px}
+  .score__meta{display:flex;flex-direction:column;gap:4px}
+  .stars{font-size:15px;letter-spacing:.16em}
+  .score__src{font-size:10px;letter-spacing:.22em}
+  .rev{border-top:0;padding-top:0}
+  .rev__stars{display:none}
+  .rev-card .stars{display:block}
+  .rev__track{
+    display:flex;gap:12px;overflow-x:auto;
+    scroll-snap-type:x mandatory;padding-right:var(--pad);
+    -webkit-overflow-scrolling:touch;
+  }
+  .rev-card{
+    flex:none;width:290px;scroll-snap-align:start;
+    border:1px solid var(--hair-2);padding:24px;gap:16px;
+  }
+  .rev-card:not(.is-active){display:flex}
+  .rev-card blockquote{font-size:22px;line-height:1.25;min-height:0}
+  .rev-card figcaption{display:block;font-size:11px;letter-spacing:.22em;color:rgba(230,223,214,.7)}
+  .rev-card figcaption span{display:none}
+  .rev__foot{display:none}
+
+  /* galería */
+  .galeria{padding-top:72px;padding-bottom:72px}
+  .galeria .sec-head{margin-bottom:24px}
+  .galeria__grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px;gap:8px}
+  .g1{grid-column:1 / 3;grid-row:span 2}
+  .g2{grid-column:auto;grid-row:auto}
+  .g3{grid-column:auto;grid-row:span 2}
+  .g4,.g5,.g6{grid-column:auto;grid-row:auto}
+
+  /* visitanos */
+  .visitanos{padding-bottom:72px;gap:20px}
+  .visitanos__info{padding-top:0;gap:20px}
+  .visitanos__map{height:220px;order:-1}
+  .fact{border-top:0;padding-top:0;gap:4px}
+  .fact dt{font-size:10px;letter-spacing:.24em}
+  .fact dd{font-size:17px}
+  .amenities{flex-direction:column;gap:12px;border-top:0;padding-top:0}
+  .visitanos .btn--ghost{width:100%;height:54px;padding:3px 20px 0;margin-top:0}
+
+  /* cierre */
+  .cierre{padding-top:80px;padding-bottom:80px;gap:22px}
+  .cierre__watermark{display:none}
+  .cierre__title{font-size:60px}
+  .cierre .btn--xl{width:100%;height:56px;padding:3px 20px 0;font-size:13px}
+
+  /* footer */
+  .site-footer{
+    display:flex;flex-direction:column;gap:24px;
+    padding:48px var(--pad) 40px;font-size:15px;line-height:1.5;
+  }
+  .site-footer__logo{height:52px;align-self:flex-start}
+  .site-footer__social{flex-direction:row;gap:20px}
+  .site-footer__social b{display:none}
+  .site-footer__social a{color:var(--cream)}
+  .site-footer__base{border-top:0;padding-top:0;font-size:10px}
+  .site-footer__base span:last-child{display:none}
+}
+
+@media (max-width:380px){
+  .hero h1{font-size:42px}
+  .cierre__title{font-size:52px}
+  .member{width:220px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header">
+  <a href="#inicio" aria-label="Café Cortado — inicio">
+    <img class="site-header__logo" src="assets/isotipo.png" alt="Café Cortado" width="500" height="600">
+  </a>
+
+  <nav class="nav" aria-label="Principal">
+    <a href="#servicios">Servicios</a>
+    <a href="#cafe">Café</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#resenas">Reseñas</a>
+    <a href="#visitanos">Visitanos</a>
+  </nav>
+
+  <a class="btn btn--solid header-cta" href="#reservar">Reservar turno</a>
+
+  <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <a href="#servicios">Servicios <span aria-hidden="true">&rarr;</span></a>
+    <a href="#cafe">Café <span aria-hidden="true">&rarr;</span></a>
+    <a href="#equipo">Equipo <span aria-hidden="true">&rarr;</span></a>
+    <a href="#resenas">Reseñas <span aria-hidden="true">&rarr;</span></a>
+    <a href="#visitanos">Visitanos <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ===== hero ===== -->
+  <section class="hero stripes" id="inicio">
+    <img class="hero__watermark" src="assets/isotipo.png" alt="" aria-hidden="true">
+
+    <p class="hero__kicker">Barbería · Café de especialidad · San Cristóbal</p>
+
+    <img class="hero__logo" src="assets/logotipo.png" alt="Café Cortado — Mucho Gusto" width="1240" height="610">
+
+    <h1>Un corte. <em>Un cortado.</em></h1>
+    <p class="hero__sub">Barbería vintage y café de especialidad en San Cristóbal.</p>
+
+    <div class="hero__actions">
+      <a class="btn btn--solid" href="#reservar">Reservar turno</a>
+      <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
+    </div>
+
+    <p class="rating-pill"><i aria-hidden="true">&#9733;</i>5,0 · 324 reseñas en Fresha</p>
+
+    <div class="hero__shot frame">
+      <img src="assets/entrada.jpg" alt="El frente de Café Cortado sobre la vereda: vidriera verde, barberpole y el salón iluminado al fondo" width="900" height="1483">
+      <div class="tint"></div>
+    </div>
+  </section>
+
+  <!-- ===== 01 · dos mundos ===== -->
+  <section class="mundos" id="mundos">
+    <div class="sec-head">
+      <div class="sec-head__left">
+        <p class="eyebrow">01 — Dos mundos</p>
+        <h2>Mitad barbería, mitad café. Todo barrio.</h2>
+      </div>
+      <p class="lede sec-head__aside">Mientras te cortás el pelo o esperás tu turno, hay un espresso esperándote.</p>
+    </div>
+
+    <div class="mundos__inner">
+      <div class="mundos__visual">
+        <figure class="m-half m-half--barberia">
+          <img src="assets/salon.jpg" alt="El salón de la barbería: sillón de cuero, espejos y un corte en proceso" width="900" height="1377">
+        </figure>
+        <figure class="m-half m-half--cafe">
+          <img src="assets/entrada.jpg" alt="La ventana del café desde la vereda, con la barra y las banquetas adentro" width="900" height="1483">
+        </figure>
+        <div class="tint mundos__tint"></div>
+        <svg class="mundos__line" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <line x1="60.2%" y1="0" x2="41.8%" y2="100%" stroke="#E6DFD6" stroke-width="1" stroke-opacity=".55"></line>
+        </svg>
+      </div>
+
+      <div class="mundos__copy">
+        <div class="m-copy m-copy--barberia">
+          <p class="eyebrow eyebrow--muted">La barbería</p>
+          <h3>Corte, barba y color</h3>
+          <p>Atención personalizada, sin apuro. Te escuchamos antes de agarrar la tijera.</p>
+        </div>
+        <div class="m-copy m-copy--cafe">
+          <p class="eyebrow eyebrow--muted">El café</p>
+          <h3>Espresso, cortado y algo dulce</h3>
+          <p>Café de especialidad intenso y pastelería simple. Para la espera o para quedarse.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 02 · servicios ===== -->
+  <section class="servicios" id="servicios">
+    <div class="servicios__intro">
+      <p class="eyebrow">02 — Servicios</p>
+      <h2>La carta de la casa</h2>
+      <p class="lede">Elegís el servicio, elegís con quién y listo. También hacemos corte femenino.</p>
+      <a class="btn btn--solid" href="#reservar">Reservar turno</a>
+    </div>
+
+    <div class="servicios__list">
+      <div class="svc-tabs" role="tablist" aria-label="Categorías de servicios">
+        <button class="svc-tab" type="button" role="tab" id="tab-0" aria-controls="cat-0" aria-selected="true">Barbería</button>
+        <button class="svc-tab" type="button" role="tab" id="tab-1" aria-controls="cat-1" aria-selected="false">Color y cuidado</button>
+      </div>
+
+      <div class="svc-cat is-active is-open" id="cat-0" role="tabpanel" aria-labelledby="tab-0">
+        <button class="svc-acc" type="button" aria-expanded="true"><span>Barbería</span><span aria-hidden="true">&minus;</span></button>
+        <div class="svc-rows">
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Corte clásico</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">45 min</span>
+            <a class="btn btn--sm" href="#reservar">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Corte + barba</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">70 min</span>
+            <a class="btn btn--sm" href="#reservar">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Barba y navaja</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">40 min</span>
+            <a class="btn btn--sm" href="#reservar">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Corte femenino</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">60 min</span>
+            <a class="btn btn--sm" href="#reservar">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Corte niños</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">30 min</span>
+            <a class="btn btn--sm" href="#reservar">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Ritual completo</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">90 min</span>
+            <a class="btn btn--sm" href="#reservar">Reservar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-cat" id="cat-1" role="tabpanel" aria-labelledby="tab-1">
+        <button class="svc-acc" type="button" aria-expanded="false"><span>Color y cuidado</span><span aria-hidden="true">+</span></button>
+        <div class="svc-rows">
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Color completo</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">120 min</span>
+            <a class="btn btn--sm" href="#reservar">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Reflejos</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">150 min</span>
+            <a class="btn btn--sm" href="#reservar">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Decoloración</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">180 min</span>
+            <a class="btn btn--sm" href="#reservar">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Tratamiento capilar</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">45 min</span>
+            <a class="btn btn--sm" href="#reservar">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Perfilado de cejas</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">20 min</span>
+            <a class="btn btn--sm" href="#reservar">Reservar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 03 · carta del café ===== -->
+  <section class="cafe" id="cafe">
+    <div class="cafe__shot frame">
+      <img src="assets/bowl.jpg" alt="Bowl de frutas frescas de la casa, servido con la marca Café Cortado" width="900" height="1384" style="object-position:center top">
+      <div class="tint"></div>
+    </div>
+
+    <div class="cafe__card">
+      <div>
+        <p class="eyebrow eyebrow--dark" style="text-align:center">03 — Carta del café</p>
+        <h2>Vení por el corte, quedate por el café.</h2>
+        <div class="cafe__rule"></div>
+
+        <div class="cafe-item">
+          <div class="cafe-item__top"><b>Espresso</b><span class="dots-fill"></span><i>$ 3.200</i></div>
+          <span>Intenso, corto y bien extraído. El que despierta.</span>
+        </div>
+        <div class="cafe-item">
+          <div class="cafe-item__top"><b>Cortado</b><span class="dots-fill"></span><i>$ 3.800</i></div>
+          <span>La casa. Espresso con la medida justa de leche.</span>
+        </div>
+        <div class="cafe-item">
+          <div class="cafe-item__top"><b>Flat white</b><span class="dots-fill"></span><i>$ 4.600</i></div>
+          <span>Doble ristretto y leche texturada. Cremoso de verdad.</span>
+        </div>
+        <div class="cafe-item">
+          <div class="cafe-item__top"><b>Medialunas</b><span class="dots-fill"></span><i>$ 2.400</i></div>
+          <span>De manteca, hechas acá a la mañana. Van de a dos.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 04 · equipo ===== -->
+  <section class="equipo" id="equipo">
+    <div class="sec-head">
+      <div class="sec-head__left">
+        <p class="eyebrow">04 — Equipo</p>
+        <h2>Mucho gusto.</h2>
+      </div>
+      <p class="lede sec-head__aside">Cuatro manos de confianza. Elegí con quién te sentás.</p>
+    </div>
+
+    <div class="equipo__grid">
+      <article class="member">
+        <div class="member__shot slot slot--portrait"><span aria-hidden="true">N</span></div>
+        <div class="member__id"><b>Nico</b><span>Barbero</span></div>
+        <a class="btn btn--wide" href="#reservar">Reservar con Nico</a>
+      </article>
+      <article class="member">
+        <div class="member__shot slot slot--portrait"><span aria-hidden="true">J</span></div>
+        <div class="member__id"><b>Juli</b><span>Barbera</span></div>
+        <a class="btn btn--wide" href="#reservar">Reservar con Juli</a>
+      </article>
+      <article class="member">
+        <div class="member__shot slot slot--portrait"><span aria-hidden="true">T</span></div>
+        <div class="member__id"><b>Tomi</b><span>Barbero</span></div>
+        <a class="btn btn--wide" href="#reservar">Reservar con Tomi</a>
+      </article>
+      <article class="member">
+        <div class="member__shot slot slot--portrait"><span aria-hidden="true">S</span></div>
+        <div class="member__id"><b>Sol</b><span>Colorista</span></div>
+        <a class="btn btn--wide" href="#reservar">Reservar con Sol</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== 05 · reseñas ===== -->
+  <section class="resenas stripes--soft" id="resenas">
+    <div class="score">
+      <p class="eyebrow">05 — Reseñas</p>
+      <div class="score__num">5,0</div>
+      <div class="score__meta">
+        <div class="stars" role="img" aria-label="5 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="score__src">324 reseñas en Fresha</div>
+      </div>
+    </div>
+
+    <div class="rev">
+      <div class="stars rev__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+
+      <div class="rev__track" id="rev-track">
+        <figure class="rev-card is-active">
+          <div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>&ldquo;Fui por un corte y me quedé una hora charlando con un cortado en la mano. Salís distinto.&rdquo;</blockquote>
+          <figcaption>Martín G. <span>· vía Fresha</span></figcaption>
+        </figure>
+        <figure class="rev-card">
+          <div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>&ldquo;El mejor fade del barrio y, encima, el café es de verdad. No conocía nada igual por acá.&rdquo;</blockquote>
+          <figcaption>Lucía R. <span>· vía Fresha</span></figcaption>
+        </figure>
+        <figure class="rev-card">
+          <div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>&ldquo;Te escuchan antes de cortar. Se nota el oficio y se nota que les gusta lo que hacen.&rdquo;</blockquote>
+          <figcaption>Diego P. <span>· vía Fresha</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="rev__foot">
+        <p class="rev__who" aria-live="polite" id="rev-who"></p>
+        <div class="rev__nav">
+          <div class="rev__dots" id="rev-dots">
+            <button type="button" aria-label="Reseña 1" aria-current="true"></button>
+            <button type="button" aria-label="Reseña 2"></button>
+            <button type="button" aria-label="Reseña 3"></button>
+          </div>
+          <button class="rev__arrow" type="button" id="rev-prev" aria-label="Reseña anterior">&larr;</button>
+          <button class="rev__arrow" type="button" id="rev-next" aria-label="Reseña siguiente">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 06 · galería ===== -->
+  <section class="galeria" id="galeria">
+    <div class="sec-head">
+      <div class="sec-head__left">
+        <p class="eyebrow">06 — Galería</p>
+        <h2>Así nos queda.</h2>
+      </div>
+      <a class="galeria__link" href="https://www.instagram.com/cafecortadobsas" target="_blank" rel="noopener">@cafecortadobsas</a>
+    </div>
+
+    <div class="galeria__grid">
+      <div class="frame g1"><img src="assets/fachada.jpg" alt="El vidriado del frente con el logo Café Cortado — Mucho Gusto" width="900" height="1451"></div>
+      <div class="frame g2"><img src="assets/bowl.jpg" alt="Bowl de frutas frescas de la casa" width="900" height="1384"></div>
+      <div class="frame g3"><img src="assets/salon.jpg" alt="Sillón de barbería y espejos del salón" width="900" height="1377"></div>
+      <div class="frame g4"><img src="assets/cartel.jpg" alt="El cartel redondo de Café Cortado colgado sobre la vereda" width="900" height="1426"></div>
+      <div class="frame g5"><img src="assets/entrada.jpg" alt="La entrada del local vista desde la vereda" width="900" height="1483" style="object-position:center 70%"></div>
+      <div class="slot g6"><span>Foto panorámica del salón</span></div>
+    </div>
+  </section>
+
+  <!-- ===== 07 · visitanos ===== -->
+  <section class="visitanos" id="visitanos">
+    <div class="visitanos__info">
+      <p class="eyebrow">07 — Visitanos</p>
+      <h2>Pasá cuando quieras.</h2>
+
+      <dl style="margin:0;display:contents">
+        <div class="fact">
+          <dt>Dirección</dt>
+          <dd>Av. Entre Ríos 920, San Cristóbal, CABA</dd>
+        </div>
+        <div class="fact">
+          <dt>Horarios</dt>
+          <dd>Lunes a sábado 8:00–20:00 · Domingo cerrado</dd>
+        </div>
+      </dl>
+
+      <ul class="amenities">
+        <li>Wi-Fi libre</li>
+        <li>Pago con QR</li>
+        <li>Reservas online</li>
+      </ul>
+
+      <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Entre%20R%C3%ADos%20920%2C%20CABA" target="_blank" rel="noopener">Cómo llegar</a>
+    </div>
+
+    <div class="visitanos__map slot"><span>Mapa · Av. Entre Ríos 920</span></div>
+  </section>
+
+  <!-- ===== cierre ===== -->
+  <section class="cierre stripes--cta" id="reservar">
+    <img class="cierre__watermark" src="assets/isotipo.png" alt="" aria-hidden="true">
+    <p class="cierre__title">¿Te sentás?</p>
+    <p>Reservá tu turno en un minuto. El café lo vemos acá.</p>
+    <a class="btn btn--xl" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&pId=2585499&dppub=true&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaeR_4clBJlrkjTOtKWt0rIRCE28STust0jutPjRysv3ms27bY4ZMiLc_jp1FQ_aem__lhtbf2Z4TCfGxyJw5xSxw&utm_source=ig&utm_medium=social&utm_content=link_in_bio&utm_id=97760_v0_s00_e0_tv3&cartId=faa413b8-2978-4b5d-abee-fa93d7370080" target="_blank" rel="noopener">Reservá tu turno</a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <img class="site-footer__logo" src="assets/isotipo.png" alt="Café Cortado" width="500" height="600">
+
+  <div class="fcol">
+    <b>Dirección</b>
+    <span>Av. Entre Ríos 920<br>San Cristóbal, CABA</span>
+  </div>
+
+  <div class="fcol">
+    <b>Horarios</b>
+    <span>Lunes a sábado 8:00–20:00<br>Domingo cerrado</span>
+  </div>
+
+  <div class="fcol site-footer__social">
+    <b>Seguinos</b>
+    <a href="https://www.instagram.com/cafecortadobsas" target="_blank" rel="noopener">Instagram · @cafecortadobsas</a>
+    <a href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&pId=2585499&dppub=true&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaeR_4clBJlrkjTOtKWt0rIRCE28STust0jutPjRysv3ms27bY4ZMiLc_jp1FQ_aem__lhtbf2Z4TCfGxyJw5xSxw&utm_source=ig&utm_medium=social&utm_content=link_in_bio&utm_id=97760_v0_s00_e0_tv3&cartId=faa413b8-2978-4b5d-abee-fa93d7370080" target="_blank" rel="noopener">Reservas en Fresha</a>
+  </div>
+
+  <div class="site-footer__base">
+    <span>Café Cortado — Mucho Gusto</span>
+    <span>Un corte. Un cortado.</span>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a href="#reservar">Reservar turno<span>&#9733; 5,0</span></a>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---- menú mobile ---- */
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobile-menu');
+
+  function setMenu(open) {
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    menu.hidden = !open;
+  }
+
+  burger.addEventListener('click', function () {
+    setMenu(burger.getAttribute('aria-expanded') !== 'true');
+  });
+
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('a')) setMenu(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') {
+      setMenu(false);
+      burger.focus();
+    }
+  });
+
+  /* el menú sólo existe en mobile: al volver a desktop se cierra */
+  var mqMobile = window.matchMedia('(max-width: 767px)');
+  function onBreakpoint() { if (!mqMobile.matches) setMenu(false); }
+  mqMobile.addEventListener ? mqMobile.addEventListener('change', onBreakpoint)
+                            : mqMobile.addListener(onBreakpoint);
+
+  /* ---- servicios: tabs en desktop, acordeón en mobile ---- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.svc-tab'));
+  var cats = Array.prototype.slice.call(document.querySelectorAll('.svc-cat'));
+
+  function selectTab(i) {
+    tabs.forEach(function (t, k) { t.setAttribute('aria-selected', String(k === i)); });
+    cats.forEach(function (c, k) { c.classList.toggle('is-active', k === i); });
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { selectTab(i); });
+    tab.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var next = (i + d + tabs.length) % tabs.length;
+      selectTab(next);
+      tabs[next].focus();
+    });
+  });
+
+  cats.forEach(function (cat) {
+    var head = cat.querySelector('.svc-acc');
+    head.addEventListener('click', function () {
+      var open = !cat.classList.contains('is-open');
+      cat.classList.toggle('is-open', open);
+      head.setAttribute('aria-expanded', String(open));
+      head.lastElementChild.textContent = open ? '−' : '+';
+    });
+  });
+
+  /* ---- carrusel de reseñas (desktop) ---- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.rev-card'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#rev-dots button'));
+  var who = document.getElementById('rev-who');
+  var current = 0;
+
+  function showReview(i) {
+    current = (i + cards.length) % cards.length;
+    cards.forEach(function (c, k) { c.classList.toggle('is-active', k === current); });
+    dots.forEach(function (d, k) {
+      if (k === current) { d.setAttribute('aria-current', 'true'); }
+      else { d.removeAttribute('aria-current'); }
+    });
+    var cap = cards[current].querySelector('figcaption');
+    who.innerHTML = '';
+    if (cap) {
+      /* childNodes es una lista viva: hay que vaciarla de a un nodo por vez */
+      var clone = cap.cloneNode(true);
+      while (clone.firstChild) { who.appendChild(clone.firstChild); }
+    }
+  }
+
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { showReview(i); }); });
+  document.getElementById('rev-prev').addEventListener('click', function () { showReview(current - 1); });
+  document.getElementById('rev-next').addEventListener('click', function () { showReview(current + 1); });
+
+  showReview(0);
+})();
+</script>
+</body>
+</html>
