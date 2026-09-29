@@ -229,22 +229,24 @@ main > section{padding-inline:var(--pad)}
   display:flex;align-items:center;gap:10px;padding:10px 18px 8px;
   border:1px solid rgba(230,223,214,.2);border-radius:999px;
   font-family:var(--f-label);font-weight:600;font-size:12px;
-  letter-spacing:.18em;text-transform:uppercase;
+  letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--cream);
 }
 .rating-pill i{font-style:normal;color:var(--tan);font-size:14px}
 .hero__shot{
-  position:relative;width:min(1312px,100%);height:540px;margin-top:48px;
+  position:relative;width:min(1312px,100%);aspect-ratio:16/9;margin-top:48px;
   box-shadow:0 40px 80px -30px rgba(0,0,0,.7);
 }
-.hero__shot img{object-position:center 30%}
+.hero__shot img{object-position:center}
 
 /* ---------- 01 · dos mundos ---------- */
 .mundos{position:relative;padding-top:150px;padding-bottom:140px}
 .mundos__visual{position:relative;height:560px}
-.m-half{position:absolute;inset:0;margin:0}
-.m-half--barberia{clip-path:polygon(0 0,58% 0,42% 100%,0 100%)}
-.m-half--cafe{clip-path:polygon(60% 0,100% 0,100% 100%,44% 100%)}
+.m-half{position:absolute;top:0;bottom:0;margin:0}
+.m-half--barberia{left:0;width:60%;clip-path:polygon(0 0,100% 0,72% 100%,0 100%)}
+.m-half--cafe{left:42%;width:58%;clip-path:polygon(31% 0,100% 0,100% 100%,2% 100%)}
 .m-half img{width:100%;height:100%;object-fit:cover;display:block}
+.m-half--barberia img{object-position:center 25%}
+.m-half--cafe img{object-position:center 72%}
 .mundos__line{position:absolute;left:0;top:-48px;width:100%;height:656px;pointer-events:none}
 .mundos__copy{display:grid;grid-template-columns:1fr 1fr;gap:120px;margin-top:56px}
 .m-copy{display:flex;flex-direction:column;gap:14px;max-width:440px}
@@ -288,12 +290,14 @@ main > section{padding-inline:var(--pad)}
 }
 .svc-row:hover{background:rgba(230,223,214,.06)}
 .svc-row__main{flex:1;min-width:0;display:flex;align-items:baseline;gap:16px}
-.svc-row__name{font-family:var(--f-display);font-weight:700;font-size:27px;white-space:nowrap}
+.svc-row__name{font-family:var(--f-display);font-weight:700;font-size:27px;white-space:normal}
 .dots-fill{flex:1;border-bottom:2px dotted rgba(230,223,214,.28);transform:translateY(-6px)}
 .svc-row__meta{
   font-family:var(--f-label);font-weight:600;font-size:12px;
   letter-spacing:.2em;text-transform:uppercase;color:rgba(230,223,214,.65);white-space:nowrap;
 }
+.servicios__all{display:inline-block;margin-top:28px;color:var(--cream);font-family:var(--f-label);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--copper);padding-bottom:6px}
+.servicios__all:hover{color:var(--tan)}
 
 /* ---------- 03 · carta del café ---------- */
 .cafe{
@@ -321,6 +325,7 @@ main > section{padding-inline:var(--pad)}
 .equipo__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
 .member{display:flex;flex-direction:column;gap:14px}
 .member__shot{position:relative;height:400px;box-shadow:0 30px 50px -25px rgba(0,0,0,.7)}
+.member__shot img{object-position:center 35%}
 .member__id{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:8px}
 .member__id b{font-family:var(--f-display);font-weight:700;font-size:32px}
 .member__id span{
@@ -339,7 +344,9 @@ main > section{padding-inline:var(--pad)}
 .score__src{
   font-family:var(--f-label);font-weight:600;font-size:12px;
   letter-spacing:.24em;text-transform:uppercase;color:rgba(230,223,214,.75);
+  text-decoration:none;
 }
+.score__src:hover{color:var(--cream)}
 .rev{display:flex;flex-direction:column;gap:28px;border-left:1px solid var(--hair-2);padding-left:80px}
 .rev__track{display:block}
 .rev-card{margin:0;display:flex;flex-direction:column;gap:28px}
@@ -410,7 +417,8 @@ main > section{padding-inline:var(--pad)}
 }
 .amenities li::before{content:"";width:8px;height:8px;background:var(--copper);transform:rotate(45deg);flex:none}
 .visitanos .btn--ghost{align-self:flex-start;margin-top:8px}
-.visitanos__map{position:relative;height:560px;filter:saturate(.6)}
+.visitanos__map{position:relative;height:560px;background:var(--cream)}
+.visitanos__map iframe{display:block;width:100%;height:100%;border:0}
 
 /* ---------- cierre ---------- */
 .cierre{
@@ -515,7 +523,7 @@ main > section{padding-inline:var(--pad)}
   .hero__actions .btn:active{background:var(--copper)}
   .rating-pill{font-size:11px;letter-spacing:.16em;padding:9px 16px 7px}
   .hero__shot{
-    width:calc(100% + (var(--pad) * 2));height:300px;
+    width:calc(100% + (var(--pad) * 2));
     margin:20px calc(var(--pad) * -1) 0;box-shadow:none;
   }
 
@@ -524,7 +532,7 @@ main > section{padding-inline:var(--pad)}
   .mundos__inner{display:flex;flex-direction:column}
   .mundos__visual,.mundos__copy{display:contents}
   .mundos__visual{height:auto}
-  .m-half{position:static;height:230px}
+  .m-half{position:static;width:100%;height:230px}
   .m-half--barberia{clip-path:polygon(0 0,100% 0,100% 82%,0 100%);order:1}
   .m-half--cafe{clip-path:polygon(0 18%,100% 0,100% 100%,0 100%);order:4}
   .mundos__tint{display:none}
@@ -700,10 +708,10 @@ main > section{padding-inline:var(--pad)}
       <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
     </div>
 
-    <p class="rating-pill"><i aria-hidden="true">&#9733;</i>5,0 · 324 reseñas en Fresha</p>
+    <a class="rating-pill" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx" target="_blank" rel="noopener"><i aria-hidden="true">&#9733;</i>5,0 · reseñas en Fresha</a>
 
     <div class="hero__shot frame">
-      <img src="assets/entrada.jpg" alt="El frente de Café Cortado sobre la vereda: vidriera verde, barberpole y el salón iluminado al fondo" width="900" height="1483">
+      <img src="assets/fresha-interior.jpg" alt="Interior de Café Cortado: la cafetería en primer plano y la barbería al fondo" width="1200" height="675" fetchpriority="high">
       <div class="tint"></div>
     </div>
   </section>
@@ -721,14 +729,14 @@ main > section{padding-inline:var(--pad)}
     <div class="mundos__inner">
       <div class="mundos__visual">
         <figure class="m-half m-half--barberia">
-          <img src="assets/salon.jpg" alt="El salón de la barbería: sillón de cuero, espejos y un corte en proceso" width="900" height="1377">
+          <img src="assets/oficial-barberia.png" alt="Barbero de Café Cortado junto a un cliente en el salón" width="658" height="760" loading="lazy">
         </figure>
         <figure class="m-half m-half--cafe">
-          <img src="assets/entrada.jpg" alt="La ventana del café desde la vereda, con la barra y las banquetas adentro" width="900" height="1483">
+          <img src="assets/oficial-cafe.png" alt="Café con arte latte servido en Café Cortado" width="721" height="823" loading="lazy">
         </figure>
         <div class="tint mundos__tint"></div>
         <svg class="mundos__line" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          <line x1="60.2%" y1="0" x2="41.8%" y2="100%" stroke="#E6DFD6" stroke-width="1" stroke-opacity=".55"></line>
+          <line x1="60%" y1="0" x2="43.2%" y2="100%" stroke="#E6DFD6" stroke-width="1" stroke-opacity=".55"></line>
         </svg>
       </div>
 
@@ -751,83 +759,84 @@ main > section{padding-inline:var(--pad)}
   <section class="servicios" id="servicios">
     <div class="servicios__intro">
       <p class="eyebrow">02 — Servicios</p>
-      <h2>La carta de la casa</h2>
-      <p class="lede">Elegís el servicio, elegís con quién y listo. También hacemos corte femenino.</p>
+      <h2>Servicios destacados</h2>
+      <p class="lede">Elegí el servicio y el profesional. La disponibilidad y los precios actualizados están en Fresha.</p>
       <a class="btn btn--solid" href="#reservar">Reservar turno</a>
     </div>
 
     <div class="servicios__list">
       <div class="svc-tabs" role="tablist" aria-label="Categorías de servicios">
         <button class="svc-tab" type="button" role="tab" id="tab-0" aria-controls="cat-0" aria-selected="true">Barbería</button>
-        <button class="svc-tab" type="button" role="tab" id="tab-1" aria-controls="cat-1" aria-selected="false">Color y cuidado</button>
+        <button class="svc-tab" type="button" role="tab" id="tab-1" aria-controls="cat-1" aria-selected="false">Peluquería</button>
       </div>
 
       <div class="svc-cat is-active is-open" id="cat-0" role="tabpanel" aria-labelledby="tab-0">
         <button class="svc-acc" type="button" aria-expanded="true"><span>Barbería</span><span aria-hidden="true">&minus;</span></button>
         <div class="svc-rows">
           <div class="svc-row">
-            <div class="svc-row__main"><span class="svc-row__name">Corte clásico</span><span class="dots-fill"></span></div>
+            <div class="svc-row__main"><span class="svc-row__name">Corte Masculino</span><span class="dots-fill"></span></div>
             <span class="svc-row__meta">45 min</span>
-            <a class="btn btn--sm" href="#reservar">Reservar</a>
+            <a class="btn btn--sm" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservar</a>
           </div>
           <div class="svc-row">
-            <div class="svc-row__main"><span class="svc-row__name">Corte + barba</span><span class="dots-fill"></span></div>
-            <span class="svc-row__meta">70 min</span>
-            <a class="btn btn--sm" href="#reservar">Reservar</a>
-          </div>
-          <div class="svc-row">
-            <div class="svc-row__main"><span class="svc-row__name">Barba y navaja</span><span class="dots-fill"></span></div>
-            <span class="svc-row__meta">40 min</span>
-            <a class="btn btn--sm" href="#reservar">Reservar</a>
-          </div>
-          <div class="svc-row">
-            <div class="svc-row__main"><span class="svc-row__name">Corte femenino</span><span class="dots-fill"></span></div>
+            <div class="svc-row__main"><span class="svc-row__name">Corte y Barba</span><span class="dots-fill"></span></div>
             <span class="svc-row__meta">60 min</span>
-            <a class="btn btn--sm" href="#reservar">Reservar</a>
+            <a class="btn btn--sm" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservar</a>
           </div>
           <div class="svc-row">
-            <div class="svc-row__main"><span class="svc-row__name">Corte niños</span><span class="dots-fill"></span></div>
-            <span class="svc-row__meta">30 min</span>
-            <a class="btn btn--sm" href="#reservar">Reservar</a>
+            <div class="svc-row__main"><span class="svc-row__name">Corte y Barba Tradicional</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">60 min</span>
+            <a class="btn btn--sm" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservar</a>
           </div>
           <div class="svc-row">
-            <div class="svc-row__main"><span class="svc-row__name">Ritual completo</span><span class="dots-fill"></span></div>
-            <span class="svc-row__meta">90 min</span>
-            <a class="btn btn--sm" href="#reservar">Reservar</a>
+            <div class="svc-row__main"><span class="svc-row__name">Barba</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">20 min</span>
+            <a class="btn btn--sm" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Barba tradicional</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">40 min</span>
+            <a class="btn btn--sm" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Permanente de Rulos</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">120 min</span>
+            <a class="btn btn--sm" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservar</a>
           </div>
         </div>
       </div>
 
       <div class="svc-cat" id="cat-1" role="tabpanel" aria-labelledby="tab-1">
-        <button class="svc-acc" type="button" aria-expanded="false"><span>Color y cuidado</span><span aria-hidden="true">+</span></button>
+        <button class="svc-acc" type="button" aria-expanded="false"><span>Peluquería</span><span aria-hidden="true">+</span></button>
         <div class="svc-rows">
           <div class="svc-row">
-            <div class="svc-row__main"><span class="svc-row__name">Color completo</span><span class="dots-fill"></span></div>
-            <span class="svc-row__meta">120 min</span>
-            <a class="btn btn--sm" href="#reservar">Reservar</a>
+            <div class="svc-row__main"><span class="svc-row__name">Corte Femenino</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">30 min</span>
+            <a class="btn btn--sm" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservar</a>
           </div>
           <div class="svc-row">
-            <div class="svc-row__main"><span class="svc-row__name">Reflejos</span><span class="dots-fill"></span></div>
-            <span class="svc-row__meta">150 min</span>
-            <a class="btn btn--sm" href="#reservar">Reservar</a>
+            <div class="svc-row__main"><span class="svc-row__name">Brushing</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">40 min</span>
+            <a class="btn btn--sm" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservar</a>
           </div>
           <div class="svc-row">
-            <div class="svc-row__main"><span class="svc-row__name">Decoloración</span><span class="dots-fill"></span></div>
+            <div class="svc-row__main"><span class="svc-row__name">Nutricion y peinado</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">80 min</span>
+            <a class="btn btn--sm" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservar</a>
+          </div>
+          <div class="svc-row">
+            <div class="svc-row__main"><span class="svc-row__name">Color global</span><span class="dots-fill"></span></div>
             <span class="svc-row__meta">180 min</span>
-            <a class="btn btn--sm" href="#reservar">Reservar</a>
+            <a class="btn btn--sm" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservar</a>
           </div>
           <div class="svc-row">
-            <div class="svc-row__main"><span class="svc-row__name">Tratamiento capilar</span><span class="dots-fill"></span></div>
-            <span class="svc-row__meta">45 min</span>
-            <a class="btn btn--sm" href="#reservar">Reservar</a>
-          </div>
-          <div class="svc-row">
-            <div class="svc-row__main"><span class="svc-row__name">Perfilado de cejas</span><span class="dots-fill"></span></div>
-            <span class="svc-row__meta">20 min</span>
-            <a class="btn btn--sm" href="#reservar">Reservar</a>
+            <div class="svc-row__main"><span class="svc-row__name">Balayage</span><span class="dots-fill"></span></div>
+            <span class="svc-row__meta">180 min</span>
+            <a class="btn btn--sm" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservar</a>
           </div>
         </div>
       </div>
+      <a class="servicios__all" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Ver todos los servicios en Fresha</a>
     </div>
   </section>
 
@@ -871,29 +880,29 @@ main > section{padding-inline:var(--pad)}
         <p class="eyebrow">04 — Equipo</p>
         <h2>Mucho gusto.</h2>
       </div>
-      <p class="lede sec-head__aside">Cuatro manos de confianza. Elegí con quién te sentás.</p>
+      <p class="lede sec-head__aside">Conocé al equipo y elegí con quién reservar en Fresha.</p>
     </div>
 
     <div class="equipo__grid">
       <article class="member">
-        <div class="member__shot slot slot--portrait"><span aria-hidden="true">N</span></div>
-        <div class="member__id"><b>Nico</b><span>Barbero</span></div>
-        <a class="btn btn--wide" href="#reservar">Reservar con Nico</a>
+        <div class="member__shot frame"><img src="assets/equipo-leonel.jpeg" alt="Leonel, del equipo de Café Cortado" width="340" height="340" loading="lazy"></div>
+        <div class="member__id"><b>Leonel</b><span>Profesional</span></div>
+        <a class="btn btn--wide" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Elegir en Fresha</a>
       </article>
       <article class="member">
-        <div class="member__shot slot slot--portrait"><span aria-hidden="true">J</span></div>
-        <div class="member__id"><b>Juli</b><span>Barbera</span></div>
-        <a class="btn btn--wide" href="#reservar">Reservar con Juli</a>
+        <div class="member__shot frame"><img src="assets/equipo-axel.jpeg" alt="Axel, del equipo de Café Cortado" width="340" height="340" loading="lazy"></div>
+        <div class="member__id"><b>Axel</b><span>Profesional</span></div>
+        <a class="btn btn--wide" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Elegir en Fresha</a>
       </article>
       <article class="member">
-        <div class="member__shot slot slot--portrait"><span aria-hidden="true">T</span></div>
-        <div class="member__id"><b>Tomi</b><span>Barbero</span></div>
-        <a class="btn btn--wide" href="#reservar">Reservar con Tomi</a>
+        <div class="member__shot frame"><img src="assets/equipo-antonella.jpeg" alt="Antonella, del equipo de Café Cortado" width="340" height="340" loading="lazy"></div>
+        <div class="member__id"><b>Antonella</b><span>Profesional</span></div>
+        <a class="btn btn--wide" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Elegir en Fresha</a>
       </article>
       <article class="member">
-        <div class="member__shot slot slot--portrait"><span aria-hidden="true">S</span></div>
-        <div class="member__id"><b>Sol</b><span>Colorista</span></div>
-        <a class="btn btn--wide" href="#reservar">Reservar con Sol</a>
+        <div class="member__shot frame"><img src="assets/equipo-mariano.jpeg" alt="Mariano, del equipo de Café Cortado" width="340" height="340" loading="lazy"></div>
+        <div class="member__id"><b>Mariano</b><span>Barbería y peluquería</span></div>
+        <a class="btn btn--wide" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Elegir en Fresha</a>
       </article>
     </div>
   </section>
@@ -905,7 +914,7 @@ main > section{padding-inline:var(--pad)}
       <div class="score__num">5,0</div>
       <div class="score__meta">
         <div class="stars" role="img" aria-label="5 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="score__src">324 reseñas en Fresha</div>
+        <a class="score__src" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx" target="_blank" rel="noopener">Ver reseñas en Fresha</a>
       </div>
     </div>
 
@@ -915,18 +924,18 @@ main > section{padding-inline:var(--pad)}
       <div class="rev__track" id="rev-track">
         <figure class="rev-card is-active">
           <div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;Fui por un corte y me quedé una hora charlando con un cortado en la mano. Salís distinto.&rdquo;</blockquote>
-          <figcaption>Martín G. <span>· vía Fresha</span></figcaption>
+          <blockquote>&ldquo;Un escándalo el nivel que maneja esta peluqueria&rdquo;</blockquote>
+          <figcaption>Daniel T <span>· vía Fresha</span></figcaption>
         </figure>
         <figure class="rev-card">
           <div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;El mejor fade del barrio y, encima, el café es de verdad. No conocía nada igual por acá.&rdquo;</blockquote>
-          <figcaption>Lucía R. <span>· vía Fresha</span></figcaption>
+          <blockquote>&ldquo;Los mejores. Gracias x todo.&rdquo;</blockquote>
+          <figcaption>Alejandro E <span>· vía Fresha</span></figcaption>
         </figure>
         <figure class="rev-card">
           <div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;Te escuchan antes de cortar. Se nota el oficio y se nota que les gusta lo que hacen.&rdquo;</blockquote>
-          <figcaption>Diego P. <span>· vía Fresha</span></figcaption>
+          <blockquote>&ldquo;Siempre es un gusto cortarse el pelo&rdquo;</blockquote>
+          <figcaption>Laura E <span>· vía Fresha</span></figcaption>
         </figure>
       </div>
 
@@ -956,12 +965,12 @@ main > section{padding-inline:var(--pad)}
     </div>
 
     <div class="galeria__grid">
-      <div class="frame g1"><img src="assets/fachada.jpg" alt="El vidriado del frente con el logo Café Cortado — Mucho Gusto" width="900" height="1451"></div>
+      <div class="frame g1"><img src="assets/fresha-frente.jpg" alt="Fachada de Café Cortado en Av. Entre Ríos 920" width="910" height="515" loading="lazy"></div>
       <div class="frame g2"><img src="assets/bowl.jpg" alt="Bowl de frutas frescas de la casa" width="900" height="1384"></div>
       <div class="frame g3"><img src="assets/salon.jpg" alt="Sillón de barbería y espejos del salón" width="900" height="1377"></div>
       <div class="frame g4"><img src="assets/cartel.jpg" alt="El cartel redondo de Café Cortado colgado sobre la vereda" width="900" height="1426"></div>
-      <div class="frame g5"><img src="assets/entrada.jpg" alt="La entrada del local vista desde la vereda" width="900" height="1483" style="object-position:center 70%"></div>
-      <div class="slot g6"><span>Foto panorámica del salón</span></div>
+      <div class="frame g5"><img src="assets/fresha-barberia.jpg" alt="Sillones y espejos de la barbería de Café Cortado" width="910" height="515" loading="lazy"></div>
+      <div class="frame g6"><img src="assets/fresha-interior.jpg" alt="Vista de la cafetería y la barbería de Café Cortado" width="1200" height="675" loading="lazy"></div>
     </div>
   </section>
 
@@ -988,10 +997,12 @@ main > section{padding-inline:var(--pad)}
         <li>Reservas online</li>
       </ul>
 
-      <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Entre%20R%C3%ADos%20920%2C%20CABA" target="_blank" rel="noopener">Cómo llegar</a>
+      <a class="btn btn--ghost" href="https://www.google.com/maps/place/Cafe+Cortado/@-34.6193473,-58.3940934,17z/data=!3m1!4b1!4m6!3m5!1s0x95bccb0005a07e09:0x96ccae8f317e7199!8m2!3d-34.6193473!4d-58.3915185!16s%2Fg%2F11xdwp0tnx?entry=ttu&g_ep=EgoyMDI2MDkyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Cómo llegar</a>
     </div>
 
-    <div class="visitanos__map slot"><span>Mapa · Av. Entre Ríos 920</span></div>
+    <div class="visitanos__map">
+      <iframe title="Mapa interactivo de Café Cortado en Google Maps" src="https://www.google.com/maps?q=Cafe%20Cortado%2C%20Av.%20Entre%20R%C3%ADos%20920%2C%20Buenos%20Aires&amp;z=16&amp;output=embed" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
   </section>
 
   <!-- ===== cierre ===== -->
@@ -999,7 +1010,7 @@ main > section{padding-inline:var(--pad)}
     <img class="cierre__watermark" src="assets/isotipo.png" alt="" aria-hidden="true">
     <p class="cierre__title">¿Te sentás?</p>
     <p>Reservá tu turno en un minuto. El café lo vemos acá.</p>
-    <a class="btn btn--xl" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&pId=2585499&dppub=true&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaeR_4clBJlrkjTOtKWt0rIRCE28STust0jutPjRysv3ms27bY4ZMiLc_jp1FQ_aem__lhtbf2Z4TCfGxyJw5xSxw&utm_source=ig&utm_medium=social&utm_content=link_in_bio&utm_id=97760_v0_s00_e0_tv3&cartId=faa413b8-2978-4b5d-abee-fa93d7370080" target="_blank" rel="noopener">Reservá tu turno</a>
+    <a class="btn btn--xl" href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservá tu turno</a>
   </section>
 
 </main>
@@ -1020,7 +1031,7 @@ main > section{padding-inline:var(--pad)}
   <div class="fcol site-footer__social">
     <b>Seguinos</b>
     <a href="https://www.instagram.com/cafecortadobsas" target="_blank" rel="noopener">Instagram · @cafecortadobsas</a>
-    <a href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&pId=2585499&dppub=true&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaeR_4clBJlrkjTOtKWt0rIRCE28STust0jutPjRysv3ms27bY4ZMiLc_jp1FQ_aem__lhtbf2Z4TCfGxyJw5xSxw&utm_source=ig&utm_medium=social&utm_content=link_in_bio&utm_id=97760_v0_s00_e0_tv3&cartId=faa413b8-2978-4b5d-abee-fa93d7370080" target="_blank" rel="noopener">Reservas en Fresha</a>
+    <a href="https://www.fresha.com/es/a/cafe-cortado-buenos-aires-av-entre-rios-920-avenida-entre-rios-oux4s5nx/booking?menu=true&amp;pId=2585499&amp;dppub=true" target="_blank" rel="noopener">Reservas en Fresha</a>
   </div>
 
   <div class="site-footer__base">
